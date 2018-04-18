@@ -2,7 +2,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-engine = create_engine('postgresql://localhost/woodstock',
+engine = create_engine('postgresql:///woodstock',
 					convert_unicode=True,
 					echo = False)
 
