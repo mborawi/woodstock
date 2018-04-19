@@ -7,6 +7,7 @@
 
 ### Build The following Endpoints:
 * [gpra8449] Search for Employees
+	* HTTP POST: /woodstock/api/search payload: query="text supplied"
 	* given a query as input
 	* If less than 3 dont search, return error of less than 3
 	* If not found return not found
@@ -15,21 +16,28 @@
 	* return a Json array of names sorted and ordered (order by name, or maybe similarity)
 	* this list will show up as suggestions for user to choose from, should return the fields that will be used to build those suggestions plus user ids.
 * [Trentham3269] List an employee
+	* HTTP GET: /woodstock/api/list/:id
 	* Given a user id, return information about employee that would show like a business card.
 	* This endpoint and next are tied together. (build together?)
 	* Add id to session (Basket)
 * [Trentham3269] List Metrics
+	* HTTP GET: /woodstock/api/metrics/:id
 	* given a user id return metrics
 * Export Metrics
+	* HTTP POST: /woodstock/api/export payload: ids=[id1,id2], metricGroups=[mg_id1,mg_id2,..]
 	* Given a list of ids of employees, build an xlxs file and return it.
 	* List of ids will be taken from session (Basket)
 * List Employees
+	* HTTP GET: /woodstock/api/basket/
 	* Find employee ids from session and return names
 * Remove Employee
+	* HTTP GET: /woodstock/api/basket/remove/:id
 	* Given an id remove them from session list (Basket)
 * Login
+	* HTTP POST: /woodstock/api/login payload: username="", password=""
 	* Given a userId, and password, authenticate with Goth, create a user session if success
 * Logout
+	* HTTP GET: /woodstock/api/logout	
 	* Clear Session
 
 
