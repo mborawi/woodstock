@@ -14,11 +14,11 @@
 	* Could use fuzzy searching, postgres has simialr function that could work
 	* return a Json array of names sorted and ordered (order by name, or maybe similarity)
 	* this list will show up as suggestions for user to choose from, should return the fields that will be used to build those suggestions plus user ids.
-* List an employee
+* [Trentham3269] List an employee
 	* Given a user id, return information about employee that would show like a business card.
 	* This endpoint and next are tied together. (build together?)
 	* Add id to session (Basket)
-* List Metrics
+* [Trentham3269] List Metrics
 	* given a user id return metrics
 * Export Metrics
 	* Given a list of ids of employees, build an xlxs file and return it.
