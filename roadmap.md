@@ -6,7 +6,7 @@
 * [mborawi] Generate fake data to reflect metrics etc
 
 ### Build The following Endpoints:
-* Search for Employees
+* [gpra8449] Search for Employees
 	* given a query as input
 	* If less than 3 dont search, return error of less than 3
 	* If not found return not found
