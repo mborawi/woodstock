@@ -2,8 +2,8 @@
 
 ## Backend
 ### Build ORM
-* [Mahmoud] Build the rest of the models reflecting the tables in proton, and relationships between them.
-* [Mahmoud] Generate fake data to reflect metrics etc
+* [mborawi] Build the rest of the models reflecting the tables in proton, and relationships between them.
+* [mborawi] Generate fake data to reflect metrics etc
 
 ### Build The following Endpoints:
 * Search for Employees
