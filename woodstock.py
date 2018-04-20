@@ -9,3 +9,9 @@ app = Flask(__name__)
 def employee(id):
 	employee = Employee.query.filter(Employee.id==id).first()
 	return jsonify(employee.serialize())
+
+# Employee select endpoint
+@app.route('/woodstock/api/list/<int:id>')
+def select(id):
+    select = Employee.query.filter(Employee.id==id).first()
+    return jsonify(select.card())
