@@ -66,16 +66,22 @@ class Employee(Base):
 	def __str__(self):
 		 return self.first_name + " " + self.last_name + ": " + self.job_title
 
+	def serializeSuggestion(self):
+		return {
+			'data': self.id,
+			'value': "{0} {1}".format(self.first_name,self.last_name)
+		}
+
 	def card(self):
-	    return {
-	        'id': self.id,
-	        'pref_name': self.pref_name,
-	        'last_name': self.last_name,
-	        'name':"{0} {1}".format(self.pref_name, self.last_name),
-	        'job_title': self.job_title,
-	        'email': self.email,
-	        'phone': self.phone,
-	        'building': self.building,
-	        'floor': self.floor,
-	        'workpoint': self.workpoint 
-	    }
+		return {
+			'id': self.id,
+			'pref_name': self.pref_name,
+			'last_name': self.last_name,
+			'name':"{0} {1}".format(self.pref_name, self.last_name),
+			'job_title': self.job_title,
+			'email': self.email,
+			'phone': self.phone,
+			'building': self.building,
+			'floor': self.floor,
+			'workpoint': self.workpoint
+		}
