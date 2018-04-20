@@ -85,3 +85,59 @@ class Employee(Base):
 			'floor': self.floor,
 			'workpoint': self.workpoint
 		}
+class Path(Base):
+	__tablename__ = 'employee_paths'
+	id = Column(Integer, primary_key = True )
+	EmployeeId = Column(Integer)
+	path = Column(int[])
+	spoc = Column(Integer)
+	choc = Column(Integer)
+	created_at = Column(DateTime, default=datetime.now)
+	updated_at = Column(DateTime, default=datetime.now)
+	deleted_at = Column(DateTime, index = True)
+
+
+
+class Topic(Base):
+	__tablename__ = 'topics'
+	id = Column(Integer, primary_key = True )
+	order = Column(Integer)
+	name = Column(String(40))
+	desc = Column(String(100))
+	created_at = Column(DateTime, default=datetime.now)
+	updated_at = Column(DateTime, default=datetime.now)
+	deleted_at = Column(DateTime, index = True)
+
+class Metric(Base):
+	__tablename__ = 'metrics'
+	id = Column(Integer, primary_key = True )
+	numVal = Column(Float)
+	strVal = Column(String(50))
+	stringFormat = Column(Boolean)
+	EmployeeId = Column(Integer)
+	TopicId = Column(Integer)
+	TypeId = Column(Integer)
+	DivisionId = Column(Integer)
+	created_at = Column(DateTime, default=datetime.now)
+	updated_at = Column(DateTime, default=datetime.now)
+	deleted_at = Column(DateTime, index = True)
+
+class Topic(Base):
+	__tablename__ = 'topics'
+	id = Column(Integer, primary_key = True )
+	order = Column(Integer)
+	name = Column(String(100))
+	desc = Column(String(1000))
+	created_at = Column(DateTime, default=datetime.now)
+	updated_at = Column(DateTime, default=datetime.now)
+	deleted_at = Column(DateTime, index = True)
+
+class Type(Base):
+	__tablename__ = 'types'
+	id = Column(Integer, primary_key = True )
+	name = Column(String(40))
+	desc = Column(String(200))
+	created_at = Column(DateTime, default=datetime.now)
+	updated_at = Column(DateTime, default=datetime.now)
+	deleted_at = Column(DateTime, index = True)
+
