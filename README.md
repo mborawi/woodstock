@@ -1,4 +1,4 @@
-# Woodstock: a flask powered snopping facility
+# Woodstock: a flask powered snooping facility
 
 Assumes:
 1. You have postgres installed 
