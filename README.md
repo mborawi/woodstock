@@ -9,4 +9,4 @@ Also:
 1. pipenv is used..install using pip3
 2. run pipenv install and pipenv shell
 3. run export FLASK_APP=woodstock.py; export FLASK_DEBUG=1; flask run
-4. curl 127.0.0.1:5000/api/woodstock/list/5
+4. curl 127.0.0.1:5000/woodstock/api/list/5
