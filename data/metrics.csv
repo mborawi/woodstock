@@ -1,0 +1,148 @@
+id,Order,Division,Type,Groups,StrFormat
+1,1,SELF,Count,Team Information,N
+2,1,SPOC,Count,Team Information,N
+3,1,CHOC,Count,Team Information,N
+4,2,SELF,Sum,Team Information,N
+5,2,SPOC,Sum,Team Information,N
+6,2,CHOC,Sum,Team Information,N
+7,3,SELF,Category,Team Information,Y
+8,3,SPOC,Mode,Team Information,Y
+9,3,CHOC,Mode,Team Information,Y
+10,4,SELF,Category,Team Information,Y
+11,4,SPOC,Mode,Team Information,Y
+12,4,CHOC,Mode,Team Information,Y
+13,5,SELF,Category,Team Information,Y
+14,5,SPOC,Mean,Team Information,N
+15,5,CHOC,Mean,Team Information,N
+16,6,SELF,Category,Team Information,N
+17,6,SPOC,Mean,Team Information,N
+18,6,CHOC,Mean,Team Information,N
+19,7,SELF,Sum,Team Information,N
+20,7,SPOC,Mean,Team Information,N
+21,7,CHOC,Mean,Team Information,N
+22,8,SELF,Indicator,Team Information,Y
+23,8,SPOC,Percent,Team Information,N
+24,8,CHOC,Percent,Team Information,N
+25,9,SELF,Indicator,Team Information,Y
+26,9,SPOC,Count,Team Information,N
+27,9,CHOC,Count,Team Information,N
+28,10,SPOC,Percent,Team Information,N
+29,10,CHOC,Percent,Team Information,N
+30,11,SELF,Indicator,Flexible Arrangements,Y
+31,11,SPOC,Percent,Flexible Arrangements,N
+32,11,CHOC,Percent,Flexible Arrangements,N
+33,12,SELF,Indicator,Flexible Arrangements,Y
+34,12,SPOC,Percent,Flexible Arrangements,N
+35,12,CHOC,Percent,Flexible Arrangements,N
+36,13,SELF,Indicator,Flexible Arrangements,Y
+37,13,SPOC,Percent,Flexible Arrangements,N
+38,13,CHOC,Percent,Flexible Arrangements,N
+39,14,SELF,Rate,Leave,N
+40,14,SPOC,Rate,Leave,N
+41,14,CHOC,Rate,Leave,N
+42,15,SELF,Sum,Leave,N
+43,15,SPOC,Mean,Leave,N
+44,15,CHOC,Mean,Leave,N
+45,16,SELF,Rate,Leave,N
+46,16,SPOC,Rate,Leave,N
+47,16,CHOC,Rate,Leave,N
+48,17,SELF,Rate,Leave,Y
+49,17,SPOC,Rate,Leave,N
+50,17,CHOC,Rate,Leave,N
+51,18,SELF,Category,Career Progression,Y
+52,18,SPOC,Count,Career Progression,N
+53,18,CHOC,Count,Career Progression,N
+54,19,SPOC,Percent,Career Progression,N
+55,19,CHOC,Percent,Career Progression,N
+56,20,SELF,Indicator,Career Progression,Y
+57,20,SPOC,Count,Career Progression,N
+58,20,CHOC,Count,Career Progression,N
+59,21,SPOC,Percent,Career Progression,N
+60,21,CHOC,Percent,Career Progression,N
+61,22,SELF,Sum,Career Progression,N
+62,22,SPOC,Mean,Career Progression,N
+63,22,CHOC,Mean,Career Progression,N
+64,23,SELF,Sum,Career Progression,N
+65,23,SPOC,Mean,Career Progression,N
+66,23,CHOC,Mean,Career Progression,N
+67,24,SELF,Category,Career Progression,Y
+68,24,SPOC,Count,Career Progression,N
+69,24,CHOC,Count,Career Progression,N
+70,25,SPOC,Percent,Career Progression,N
+71,25,CHOC,Percent,Career Progression,N
+72,26,SELF,Sum,Career Progression,N
+73,26,SPOC,Sum,Career Progression,N
+74,26,CHOC,Sum,Career Progression,N
+75,27,SELF,Count,Career Progression,Y
+76,27,SPOC,Count,Career Progression,N
+77,27,CHOC,Count,Career Progression,N
+78,28,SPOC,Percent,Career Progression,N
+79,28,CHOC,Percent,Career Progression,N
+80,29,SELF,Count,Career Progression,Y
+81,29,SPOC,Count,Career Progression,N
+82,29,CHOC,Count,Career Progression,N
+83,30,SPOC,Percent,Career Progression,N
+84,30,CHOC,Percent,Career Progression,N
+85,31,SELF,Count,People & Health,N
+86,31,SPOC,Count,People & Health,N
+87,31,CHOC,Count,People & Health,N
+88,32,SPOC,Permillage,People & Health,N
+89,32,CHOC,Percent,People & Health,N
+90,33,SELF,Sum,People & Health,N
+91,33,SPOC,Sum,People & Health,N
+92,33,CHOC,Sum,People & Health,N
+93,34,SELF,Indicator,Training,Y
+94,34,SPOC,Percent,Training,N
+95,34,CHOC,Percent,Training,N
+96,35,SELF,Indicator,Training,Y
+97,35,SPOC,Count,Training,N
+98,35,CHOC,Count,Training,N
+99,36,SPOC,Percent,Training,N
+100,36,CHOC,Percent,Training,N
+101,37,SELF,Count,Training,N
+102,37,SPOC,Mean,Training,N
+103,37,CHOC,Mean,Training,N
+104,38,SELF,Indicator,Training,Y
+105,38,SPOC,Count,Training,N
+106,38,CHOC,Count,Training,N
+107,39,SPOC,Percent,Training,N
+108,39,CHOC,Percent,Training,N
+109,40,SELF,Count,Training,N
+110,40,SPOC,Mean,Training,N
+111,40,CHOC,Mean,Training,N
+112,41,SELF,Indicator,Training,Y
+113,41,SPOC,Count,Training,N
+114,41,CHOC,Count,Training,N
+115,42,SPOC,Percent,Training,N
+116,42,CHOC,Percent,Training,N
+117,43,SELF,Count,Training,N
+118,43,SPOC,Mean,Training,N
+119,43,CHOC,Mean,Training,N
+120,44,SELF,Indicator,Training,Y
+121,44,SPOC,Count,Training,N
+122,44,CHOC,Count,Training,N
+123,45,SPOC,Percent,Training,N
+124,45,CHOC,Percent,Training,N
+125,46,SELF,Count,Training,N
+126,46,SPOC,Mean,Training,N
+127,46,CHOC,Mean,Training,N
+128,47,SELF,Sum,Training,N
+129,47,SPOC,Sum,Training,N
+130,47,CHOC,Sum,Training,N
+131,48,SPOC,Mean,Training,N
+132,48,CHOC,Mean,Training,N
+133,49,SELF,Count,Training,Y
+134,49,SPOC,Count,Training,N
+135,49,CHOC,Count,Training,N
+136,50,SPOC,Percent,Training,N
+137,50,CHOC,Percent,Training,N
+138,51,CHOC,Percent,Training,N
+139,52,SELF,Count,Diversity,Y
+140,52,SPOC,Count,Diversity,N
+141,52,CHOC,Count,Diversity,N
+142,53,SPOC,Percent,Diversity,N
+143,53,CHOC,Percent,Diversity,N
+144,54,CHOC,Percent,Diversity,N
+145,55,CHOC,Percent,Diversity,N
+146,56,CHOC,Percent,Diversity,N
+147,57,CHOC,Percent,Diversity,N
