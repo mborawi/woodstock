@@ -25,7 +25,7 @@
 * [Trentham3269] List Metrics
 	* HTTP GET: /woodstock/api/metrics/:id
 	* given a user id return metrics
-* Export Metrics
+* [Mborawi] Export Metrics
 	* HTTP POST: /woodstock/api/export payload: ids=[id1,id2], metricGroups=[mg_id1,mg_id2,..]
 	* Given a list of ids of employees, build an xlxs file and return it.
 	* List of ids will be taken from session (Basket)

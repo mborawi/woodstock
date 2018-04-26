@@ -4,7 +4,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 engine = create_engine('postgresql:///woodstock',
 					convert_unicode=True,
-					echo = True)
+					echo = False)
 
 db_session = scoped_session(sessionmaker(autocommit=False,autoflush=False, bind=engine))
 
