@@ -150,13 +150,31 @@ def generateEmployeeAndMetrics(N, topics, groups, divisions, types):
 	db_session.commit()
 
 if __name__ == "__main__":
+
+	# drop all the table existing in the db with all data in them.
 	Base.metadata.drop_all(bind=engine)
+
+	# create new empty tables as per models.py defintions. 
 	Base.metadata.create_all(bind=engine)
+
+	# populate divisions
 	ds = createDivisions()
+
+	# populate types
 	ts = createTypes()
 	gs = createGroups()
 	tps = createTopics()
-	generateEmployeeAndMetrics(N=100, topics=tps, groups=gs, divisions=ds, types=ts) 
+
+	# populate employees with random staff and metrics
+	generateEmployeeAndMetrics(N=1000, topics=tps, groups=gs, divisions=ds, types=ts) 
+
+	try:
+		# ensure simialrity extension is enabled to do fuzzy word searches
+		res = engine.execute("CREATE EXTENSION pg_trgm CASCADE")
+		res = engine.execute("SELECT set_limit(0.5)")
+	except Exception as e:
+		print(e)
+
 
 
 
