@@ -10,9 +10,15 @@ app = Flask(__name__)
 # Employee search endpoint
 @app.route('/woodstock/api/search')
 def search():
-    keyword = "%%%s%%"%request.args.get('query', '')    
-    all = Employee.query.filter(Employee.first_name.ilike(keyword) | Employee.last_name.ilike(keyword)).all()    
-    return jsonify(query="unit",suggestions=[e.serializeSuggestion() for e in all])
+    keywords = request.args.get('query', '').strip()
+    if (' ' in keywords):
+    	k0 = '%%%s%%'%keywords.split()[0]
+    	k1 = '%%%s%%'%keywords.split()[1]
+    	all = Employee.query.filter(Employee.first_name.ilike(k0) | Employee.pref_name.ilike(k0), Employee.last_name.ilike(k1)).all()
+    else:
+    	keyword = '%%%s%%'%keywords
+    	all = Employee.query.filter(Employee.first_name.ilike(keyword) | Employee.last_name.ilike(keyword) | Employee.user_id.ilike(keyword)).all()
+    return jsonify(suggestions=[e.serializeSuggestion() for e in all])
 
 @app.route('/woodstock/api/search2')
 def search2():
@@ -32,7 +38,7 @@ def search2():
 	print(result)
     
 	c.close()
-	return jsonify(query="unit",suggestions=result)
+	return jsonify(query='unit',suggestions=result)
 
 
 
