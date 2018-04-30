@@ -11,7 +11,7 @@ app = Flask(__name__)
 @app.route('/woodstock/api/search')
 def search():
     keyword = "%%%s%%"%request.args.get('query', '')    
-    all = Employee.query.filter(Employee.first_name.like(keyword) | Employee.last_name.like(keyword)).all()    
+    all = Employee.query.filter(Employee.first_name.ilike(keyword) | Employee.last_name.ilike(keyword)).all()    
     return jsonify(query="unit",suggestions=[e.serializeSuggestion() for e in all])
 
 @app.route('/woodstock/api/search2', methods=['POST'])
