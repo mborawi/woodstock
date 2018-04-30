@@ -13,6 +13,7 @@ class Employee(Base):
 	first_name = Column(String(25))
 	pref_name = Column(String(25))
 	last_name = Column(String(25))
+	full_name = Column(String(51))
 	user_id = Column(String(5), index = True)
 	position_id = Column(Integer)
 	job_title = Column(String(40))
@@ -35,6 +36,7 @@ class Employee(Base):
 				first_name=None,\
 				pref_name=None,\
 				last_name=None,\
+				full_name=None,\
 				user_id=None,\
 				position_id=None,\
 				job_title=None,\
@@ -53,6 +55,7 @@ class Employee(Base):
 		self.first_name = first_name
 		self.pref_name = pref_name
 		self.last_name = last_name
+		self.full_name = full_name
 		self.user_id = user_id
 		self.position_id = position_id
 		self.job_title = job_title

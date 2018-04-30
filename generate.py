@@ -88,9 +88,11 @@ def generateEmps(N):
 	for i in range(1, N+1):
 		r = random.randint(0,i)
 		fn = fake.first_name()
+		ln = fake.last_name()
 		p = Employee(first_name = fn,\
 			pref_name  = fn,\
-			last_name  = fake.last_name(),\
+			last_name  = ln,\
+			full_name = fn + " " + ln,\
 			user_id = "u" + fake.sha1()[0:4],\
 			position_id = i,\
 			job_title = fake.job()[0:40],\
@@ -114,9 +116,11 @@ def generateEmployeeAndMetrics(N, topics, groups, divisions, types):
 	for i in range(1, N+1):
 		r = random.randint(0,i)
 		fn = fake.first_name()
+		ln = fake.first_name()
 		emp = Employee(first_name = fn,\
 			pref_name  = fn,\
-			last_name  = fake.last_name(),\
+			last_name  = ln,\
+			full_name = fn + " " + ln,\
 			user_id = "u" + fake.sha1()[0:4],\
 			position_id = i,\
 			job_title = fake.job()[0:40],\
