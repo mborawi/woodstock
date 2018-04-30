@@ -24,8 +24,7 @@ def search():
 def search2():
 	keyword = request.args.get('query', '') 
 	c = engine.connect()
-	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity('pref_name', :x)+similarity('last_name', :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
-	# SELECT  pref_name, last_name, user_id, similarity(pref_name,'rob')+similarity(last_name,'rob') as sml  FROM employees ORDER BY sml DESC LIMIT 10
+	stmt = text("SELECT id, pref_name, last_name, user_id, similarity(pref_name, :x)+similarity(last_name, :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
 	qresult = c.execute(stmt, {"x": "%s"%keyword, "y": 20})
 
 	result = []
