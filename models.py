@@ -75,7 +75,7 @@ class Employee(Base):
 	def serializeSuggestion(self):
 		return {
 			'data': self.id,
-			'value': "{0} {1}".format(self.first_name,self.last_name)
+			'value': "{0} {1}, {2}".format(self.pref_name,self.last_name,self.user_id)
 		}
 
 	def card(self):
