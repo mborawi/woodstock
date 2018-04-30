@@ -166,7 +166,7 @@ if __name__ == "__main__":
 	tps = createTopics()
 
 	# populate employees with random staff and metrics
-	generateEmployeeAndMetrics(N=1000, topics=tps, groups=gs, divisions=ds, types=ts) 
+	generateEmployeeAndMetrics(N=100, topics=tps, groups=gs, divisions=ds, types=ts) 
 
 	try:
 		# ensure simialrity extension is enabled to do fuzzy word searches

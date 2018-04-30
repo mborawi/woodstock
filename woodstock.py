@@ -14,13 +14,13 @@ def search():
     all = Employee.query.filter(Employee.first_name.ilike(keyword) | Employee.last_name.ilike(keyword)).all()    
     return jsonify(query="unit",suggestions=[e.serializeSuggestion() for e in all])
 
-@app.route('/woodstock/api/search2', methods=['POST'])
+@app.route('/woodstock/api/search2')
 def search2():
-	c = engine.connect()
 	keyword = request.args.get('query', '') 
-	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity(pref_name, :x)+similarity(last_name, :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
+	c = engine.connect()
+	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity('pref_name', :x)+similarity('last_name', :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
 	# SELECT  pref_name, last_name, user_id, similarity(pref_name,'rob')+similarity(last_name,'rob') as sml  FROM employees ORDER BY sml DESC LIMIT 10
-	qresult = c.execute(stmt, {"x": keyword, "y": 20})
+	qresult = c.execute(stmt, {"x": "%s"%keyword, "y": 20})
 
 	result = []
 	for row in qresult:
