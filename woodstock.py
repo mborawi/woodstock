@@ -9,6 +9,12 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = b'mySessionSecret'
 
+@app.route('/')
+@app.route('/woodstock')
+@app.route('/woodstock/')
+def index():
+	return send_from_directory(directory='static', filename='index.html')
+
 # Employee search endpoint
 @app.route('/woodstock/api/search')
 def search():
@@ -64,8 +70,3 @@ def logout():
 	session.pop('username', None)
 	session.pop('loginTime', None)
 	return jsonify({"verified":False})
-
-
-
-
-
