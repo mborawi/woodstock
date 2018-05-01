@@ -65,7 +65,7 @@ def login():
 		return jsonify({"verified":False})
 	return username
 
-@app.route('/logout')
+@app.route('/woodstock/api/logout')
 def logout():
 	session.pop('username', None)
 	session.pop('loginTime', None)

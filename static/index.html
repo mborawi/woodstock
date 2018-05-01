@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Woodstock</title>
+</head>
+<body>
+	<h1>Woodstock</h1>
+	<div id="app">
+
+  <div class="container"  v-if="!loggedin">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" v-model="username" placeholder="username" name="uname" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" v-model="password" placeholder="Enter Password" name="psw" required>
+
+    <button @click="Login">Login</button>
+  </div>
+    <button @click="Logout" v-if="loggedin">Logout</button>
+</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script type="text/javascript">
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		    username: '',
+		    password: '',
+		    loggedin: false,
+		    users : []
+		  },
+		  methods:{
+		  	Login(){
+				axios.post('/woodstock/api/login',{
+   					username: this.username,
+    				password: this.password
+  				})
+				  .then(response =>  {
+				  	if(response.data.verified){
+				  		console.log(this.loggedin,"===================");
+				  		this.loggedin = true;
+				  		console.log(this.loggedin,"===================");
+				  	}
+				    console.log(response.data);
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+		  	},
+		  	Logout(){
+				axios.get('/woodstock/api/logout')
+				  .then(response => {
+				  		this.loggedin = false;
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+		  	}
+		  }
+		});
+	</script>
+
+</body>
+</html>
