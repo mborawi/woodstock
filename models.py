@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Table
+from sqlalchemy import Column, Integer, String, Table, Index
 from sqlalchemy import Float, ForeignKey, DateTime, Boolean, PrimaryKeyConstraint
 from sqlalchemy.dialects import postgresql
 from sqlalchemy.orm import relationship, aliased
@@ -13,6 +13,7 @@ class Employee(Base):
 	first_name = Column(String(25))
 	pref_name = Column(String(25))
 	last_name = Column(String(25))
+	full_name = Column(String(51))
 	user_id = Column(String(5), index = True)
 	position_id = Column(Integer)
 	job_title = Column(String(40))
@@ -29,6 +30,7 @@ class Employee(Base):
 	updated_at = Column(DateTime, default=datetime.now)
 	deleted_at = Column(DateTime, index = True)
 	metrics = relationship("Metric", backref = "employees", order_by="Metric.topic_id")
+	
 
 	def __init__(self, \
 				id=None,\
@@ -53,6 +55,7 @@ class Employee(Base):
 		self.first_name = first_name
 		self.pref_name = pref_name
 		self.last_name = last_name
+		self.full_name = "{0} {1}".format(pref_name, last_name)
 		self.user_id = user_id
 		self.position_id = position_id
 		self.job_title = job_title
@@ -67,15 +70,15 @@ class Employee(Base):
 		self.bsl = bsl
 
 	def __repr__(self):
-		return "Employee [ name='%s %s', userId='%s' ]" % (self.first_name, self.last_name, self.user_id )
+		return "Employee [ name='%s', userId='%s' ]" % (self.full_name, self.user_id )
 	
 	def __str__(self):
-		 return self.first_name + " " + self.last_name + ": " + self.job_title
+		 return self.full_name + ": " + self.job_title
 
 	def serializeSuggestion(self):
 		return {
 			'data': self.id,
-			'value': "{0} {1}".format(self.first_name,self.last_name)
+			'value': "{0}".format(self.full_name)
 		}
 
 	def card(self):
@@ -83,7 +86,7 @@ class Employee(Base):
 			'id': self.id,
 			'pref_name': self.pref_name,
 			'last_name': self.last_name,
-			'name':"{0} {1}".format(self.pref_name, self.last_name),
+			'name': self.full_name,
 			'job_title': self.job_title,
 			'email': self.email,
 			'phone': self.phone,
@@ -96,7 +99,7 @@ class Employee(Base):
 		return {
 			'employee': {
 				'id': 			self.id,
-				'name': 		"{0} {1}".format(self.pref_name,self.last_name).title(),
+				'name': 		self.full_name.title(),
 				'userid': 		self.user_id,
 				'position': 	self.position_id,
 				'title': 		self.job_title,
@@ -245,3 +248,4 @@ class Activity(Base):
 		return self.__repr__()
 
 	
+# 

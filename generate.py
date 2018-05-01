@@ -166,10 +166,13 @@ if __name__ == "__main__":
 	tps = createTopics()
 
 	# populate employees with random staff and metrics
-	generateEmployeeAndMetrics(N=100, topics=tps, groups=gs, divisions=ds, types=ts) 
+	generateEmployeeAndMetrics(N=500, topics=tps, groups=gs, divisions=ds, types=ts) 
 
 	try:
 		# ensure simialrity extension is enabled to do fuzzy word searches
+		res = engine.execute("CREATE EXTENSION btree_gist;")
+		idx = Index('idx_full_name_gist', Employee.full_name, postgresql_using="gist")
+		idx.create(bind=engine)
 		res = engine.execute("CREATE EXTENSION pg_trgm CASCADE")
 		res = engine.execute("SELECT set_limit(0.5)")
 	except Exception as e:

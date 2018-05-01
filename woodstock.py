@@ -18,21 +18,19 @@ def search():
 def search2():
 	keyword = request.args.get('query', '') 
 	c = engine.connect()
-	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity('pref_name', :x)+similarity('last_name', :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
-	# SELECT  pref_name, last_name, user_id, similarity(pref_name,'rob')+similarity(last_name,'rob') as sml  FROM employees ORDER BY sml DESC LIMIT 10
+	stmt = text("SELECT  id, full_name, user_id, similarity(full_name, :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
 	qresult = c.execute(stmt, {"x": "%s"%keyword, "y": 20})
 
 	result = []
 	for row in qresult:
 		t = {
 		'data': row['id'],
-		'value': "{0} {1}".format(row['pref_name'],row['last_name'])
+		'value': row['full_name']
 		}
 		result.append(t)
-	print(result)
     
 	c.close()
-	return jsonify(query="unit",suggestions=result)
+	return jsonify(suggestions=result)
 
 
 
