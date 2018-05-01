@@ -4,8 +4,10 @@ from flask import jsonify
 from models import Employee
 from database import engine
 from sqlalchemy.sql import text
+from datetime import datetime
 
 app = Flask(__name__)
+app.secret_key = b'mySessionSecret'
 
 # Employee search endpoint
 @app.route('/woodstock/api/search')
@@ -16,10 +18,13 @@ def search():
 
 @app.route('/woodstock/api/search2')
 def search2():
+	# if 'username' not in session:
+	if False:
+		return jsonify(username=None,suggestions=None)
+
 	keyword = request.args.get('query', '') 
 	c = engine.connect()
 	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity('pref_name', :x)+similarity('last_name', :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
-	# SELECT  pref_name, last_name, user_id, similarity(pref_name,'rob')+similarity(last_name,'rob') as sml  FROM employees ORDER BY sml DESC LIMIT 10
 	qresult = c.execute(stmt, {"x": "%s"%keyword, "y": 20})
 
 	result = []
@@ -29,15 +34,38 @@ def search2():
 		'value': "{0} {1}".format(row['pref_name'],row['last_name'])
 		}
 		result.append(t)
-	print(result)
     
 	c.close()
-	return jsonify(query="unit",suggestions=result)
-
-
+	return jsonify(username=session.get("username"),suggestions=result)
 
 # Employee select endpoint
 @app.route('/woodstock/api/list/<int:id>')
 def employee(id):
     employee = Employee.query.filter(Employee.id==id).first()
     return jsonify(employee.card())
+
+
+@app.route('/woodstock/api/login', methods=['POST'])
+def login():
+	content = request.json
+	username = content['username']
+	password = content['password']
+	if username == "uc123":
+		session['username'] = username
+		session['loginTime'] = datetime.now()
+		print(username,":::::::::::",session)
+		return jsonify({"verified":True})
+	else:
+		return jsonify({"verified":False})
+	return username
+
+@app.route('/logout')
+def logout():
+	session.pop('username', None)
+	session.pop('loginTime', None)
+	return jsonify({"verified":False})
+
+
+
+
+
