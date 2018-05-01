@@ -30,19 +30,20 @@ def search2():
 
 	keyword = request.args.get('query', '') 
 	c = engine.connect()
-	stmt = text("SELECT  id, pref_name, last_name, user_id, similarity('pref_name', :x)+similarity('last_name', :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
+
+	stmt = text("SELECT  id, full_name, user_id, similarity(full_name, :x) as sml FROM employees ORDER BY sml DESC LIMIT :y")
 	qresult = c.execute(stmt, {"x": "%s"%keyword, "y": 20})
 
 	result = []
 	for row in qresult:
 		t = {
 		'data': row['id'],
-		'value': "{0} {1}".format(row['pref_name'],row['last_name'])
+		'value': row['full_name']
 		}
 		result.append(t)
     
 	c.close()
-	return jsonify(username=session.get("username"),suggestions=result)
+	return jsonify(suggestions=result)
 
 # Employee select endpoint
 @app.route('/woodstock/api/list/<int:id>')
